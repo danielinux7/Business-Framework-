@@ -3,6 +3,7 @@ package CreditCardExample;
 import BusinessFramework.BusFrm;
 import BusinessFramework.Command;
 import CardGUI.CardFrm;
+import Hibernate.MainSession;
 public class Cmd extends Command {
 
 	protected CardFrm bf;
@@ -16,8 +17,15 @@ public class Cmd extends Command {
 	public void executeLogic() {
 
 		Object object = this.event.getSource();
-		if (object == this.bf.JButton_Exit)
+		if (object == this.bf.JButton_Exit){
+			try {
+				MainSession.tearDown();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			System.exit(0);
+		}
 		else if (object == this.bf.JButton_NewAccount)
 			new NewAccCommand(this.bf).execute();
 		else if (object == this.bf.JButton_Deposit)

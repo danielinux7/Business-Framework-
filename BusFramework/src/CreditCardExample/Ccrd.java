@@ -3,6 +3,7 @@ package CreditCardExample;
 import javax.swing.UIManager;
 
 import CardGUI.CardFrm;
+import Hibernate.MainSession;
 
 public class Ccrd {
 	/*****************************************************
@@ -23,7 +24,9 @@ public class Ccrd {
 
 			// Create a new instance of our application's frame, and make it
 			// visible.
+			MainSession.setUp();
 			(new CardFrm()).setVisible(true);
+			
 		} catch (Throwable t) {
 			t.printStackTrace();
 			// Ensure the application exits with an error condition.

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Customer implements ICustomer {
+	private String id;
 	private String name;
 	private String city;
 	private String state;
@@ -22,7 +23,7 @@ public class Customer implements ICustomer {
 	@Override
 	public void addAccount(IAccount account) {
 		this.accountlist.put(account.getAccnr(), account);
-
+		
 	}
 
 	@Override
@@ -103,6 +104,22 @@ public class Customer implements ICustomer {
 	@Override
 	public IAccount getAccount(String accnr) {
 		return this.accountlist.get(accnr);
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Map<String, IAccount> getAccountlist() {
+		return accountlist;
+	}
+
+	public void setAccountlist(Map<String, IAccount> accountlist) {
+		this.accountlist = accountlist;
 	}
 
 }

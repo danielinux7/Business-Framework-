@@ -2,6 +2,7 @@ package BankingExample;
 
 import BankGUI.BankFrm;
 import BusinessFramework.Command;
+import Hibernate.MainSession;
 
 public class Cmd extends Command {
 
@@ -16,8 +17,15 @@ public class Cmd extends Command {
 	public void executeLogic() {
 
 		Object object = this.event.getSource();
-		if (object == this.bf.JButton_Exit)
+		if (object == this.bf.JButton_Exit){
+			try {
+				MainSession.tearDown();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			System.exit(0);
+		}
 		else if (object == this.bf.JButton_PerAC)
 			new PersonalCommand(this.bf).execute();
 		else if (object == this.bf.JButton_CompAC)

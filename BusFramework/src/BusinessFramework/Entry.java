@@ -3,6 +3,7 @@ package BusinessFramework;
 import java.util.Date;
 
 public class Entry implements IEntry {
+	private int id;
 	private double amount;
 	private Date date;
 
@@ -24,5 +25,13 @@ public class Entry implements IEntry {
 	@Override
 	public Date getDate() {
 		return date;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

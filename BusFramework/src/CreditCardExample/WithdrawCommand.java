@@ -2,7 +2,7 @@ package CreditCardExample;
 
 import javax.swing.JOptionPane;
 
-import BusinessFramework.DBsim;
+import BusinessFramework.DbFacade;
 import BusinessFramework.JDialog_Withdraw;
 import CardGUI.CardFrm;
 
@@ -45,7 +45,7 @@ public class WithdrawCommand extends Cmd {
 							JOptionPane.WARNING_MESSAGE);
 				}
 				// should be account number here.
-				DBsim.getInstance().getCustomer(accnr).getAccount(accnr)
+				DbFacade.getInstance().getCustomer(accnr).getAccount(accnr)
 						.Withdraw(deposit);
 			}
 		}

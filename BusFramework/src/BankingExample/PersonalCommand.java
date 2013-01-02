@@ -2,7 +2,7 @@ package BankingExample;
 
 import BankGUI.BankFrm;
 import BankGUI.JDialog_Addper;
-import BusinessFramework.DBsim;
+import BusinessFramework.DbFacade;
 
 public class PersonalCommand extends Cmd {
 
@@ -50,7 +50,7 @@ public class PersonalCommand extends Cmd {
 				check.setAccnr(pac.accountnr);
 				cust.addAccount(check);
 			}
-			DBsim.getInstance().addCustomer(pac.accountnr, cust);
+			DbFacade.getInstance().addCustomer(pac.accountnr, cust);
 		}
 	}
 }

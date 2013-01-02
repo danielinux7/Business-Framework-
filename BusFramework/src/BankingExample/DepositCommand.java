@@ -1,7 +1,7 @@
 package BankingExample;
 
 import BankGUI.BankFrm;
-import BusinessFramework.DBsim;
+import BusinessFramework.DbFacade;
 import BusinessFramework.JDialog_Deposit;
 
 public class DepositCommand extends Cmd {
@@ -35,7 +35,7 @@ public class DepositCommand extends Cmd {
 				long newamount = currentamount + deposit;
 				this.bf.model.setValueAt(String.valueOf(newamount), selection,
 						5);
-				DBsim.getInstance().getCustomer(accnr).getAccount(accnr)
+				DbFacade.getInstance().getCustomer(accnr).getAccount(accnr)
 						.Deposit(deposit);
 			}
 			// IEntry e = new Entry();

@@ -2,7 +2,7 @@ package BusinessFramework;
 
 import java.util.List;
 
-public interface IDBsim {
+public interface IDbFacade {
 	public void addCustomer(String accnr, ICustomer cust);
 
 	public ICustomer getCustomer(String accnr);

@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 import BankingExample.Cmd;
 import BusinessFramework.AccManager;
+import Hibernate.MainSession;
 
 /**
  * A basic JFC based application.

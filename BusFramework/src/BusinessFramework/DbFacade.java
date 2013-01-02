@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class DBsim implements IDBsim {
-	private static IDBsim db = new DBsim();
+public class DbFacade implements IDbFacade {
+	private static IDbFacade db = new DbFacade();
 	private Map<String, ICustomer> customermap = new HashMap();
 
-	private DBsim() {
+	private DbFacade() {
 	}
 
-	public static IDBsim getInstance() {
+	public static IDbFacade getInstance() {
 		return db;
 	}
 

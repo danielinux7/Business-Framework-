@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import BankGUI.BankFrm;
-import BusinessFramework.DBsim;
+import BusinessFramework.DbFacade;
 import BusinessFramework.IAccount;
 import BusinessFramework.ICustomer;
 import CreditCardExample.Bronze;
@@ -24,7 +24,7 @@ public class InterestCommand extends Cmd {
 
 		 int yes = JOptionPane.showConfirmDialog((Frame)null, "Add interest to all accounts");
 		 if(yes == 0){
-			 List<ICustomer> list = DBsim.getInstance().getCustomerList();
+			 List<ICustomer> list = DbFacade.getInstance().getCustomerList();
 			 for(ICustomer cust:list){
 			 for (IAccount acc : cust.getAccountList()){
 					 if (acc.getClass().equals(new Checking("checking").getClass())) {
@@ -38,7 +38,7 @@ public class InterestCommand extends Cmd {
 			 int row = 0;
 			 while(row < this.bf.model.getRowCount()){
 			 String accnr = (String) this.bf.model.getValueAt(row, 0);
-			 IAccount acc1= DBsim.getInstance().getCustomer(accnr).getAccount(accnr);
+			 IAccount acc1= DbFacade.getInstance().getCustomer(accnr).getAccount(accnr);
 			 this.bf.model.setValueAt(String.valueOf(acc1.getBalance()), row,
 						5);
 			 row++;

@@ -81,4 +81,12 @@ public class Account implements IAccount {
 
 	}
 
+	public void setEntrylist(List<IEntry> entrylist) {
+		this.entrylist = entrylist;
+	}
+
+	public List<IEntry> getEntrylist() {
+		return entrylist;
+	}
+
 }

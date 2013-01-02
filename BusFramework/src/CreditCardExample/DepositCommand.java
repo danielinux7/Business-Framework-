@@ -1,6 +1,6 @@
 package CreditCardExample;
 
-import BusinessFramework.DBsim;
+import BusinessFramework.DbFacade;
 import BusinessFramework.JDialog_Deposit;
 import CardGUI.CardFrm;
 
@@ -35,7 +35,7 @@ public class DepositCommand extends Cmd {
 				this.bf.model.setValueAt(String.valueOf(newamount), selection,
 						4);
 				// should be account number here.
-				DBsim.getInstance().getCustomer(accnr).getAccount(accnr)
+				DbFacade.getInstance().getCustomer(accnr).getAccount(accnr)
 						.Deposit(deposit);
 			}
 		}

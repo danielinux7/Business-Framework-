@@ -4,7 +4,7 @@ import java.util.List;
 
 import BankingExample.Company;
 import BankingExample.Personal;
-import BusinessFramework.DBsim;
+import BusinessFramework.DbFacade;
 import BusinessFramework.IAccount;
 import BusinessFramework.ICustomer;
 import BusinessFramework.IEntry;
@@ -20,7 +20,7 @@ public class GenBillCommand extends Cmd {
 	@Override
 	public void execute() {
 		String billstring = "";
-		List<ICustomer> custlist = DBsim.getInstance().getCustomerList();
+		List<ICustomer> custlist = DbFacade.getInstance().getCustomerList();
 		for (ICustomer cust : custlist) {
 			// generate the string for the monthly bill
 			billstring += "Name= " + cust.getName() + "\r\n";

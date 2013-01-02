@@ -3,7 +3,7 @@ package BankingExample;
 import javax.swing.JOptionPane;
 
 import BankGUI.BankFrm;
-import BusinessFramework.DBsim;
+import BusinessFramework.DbFacade;
 import BusinessFramework.JDialog_Withdraw;
 
 public class WithdrawCommand extends Cmd {
@@ -43,7 +43,7 @@ public class WithdrawCommand extends Cmd {
 							"Warning: negative balance",
 							JOptionPane.WARNING_MESSAGE);
 				}
-				DBsim.getInstance().getCustomer(accnr).getAccount(accnr)
+				DbFacade.getInstance().getCustomer(accnr).getAccount(accnr)
 						.Withdraw(deposit);
 			}
 		}

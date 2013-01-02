@@ -1,7 +1,7 @@
 package CreditCardExample;
 
 import BusinessFramework.Customer;
-import BusinessFramework.DBsim;
+import BusinessFramework.DbFacade;
 import BusinessFramework.ICustomer;
 import CardGUI.CardFrm;
 import CardGUI.JDialog_Addcc;
@@ -61,7 +61,7 @@ public class NewAccCommand extends Cmd {
 				bronze.setDate(ccac.expdate);
 				cust.addAccount(bronze);
 			}
-			DBsim.getInstance().addCustomer(ccac.ccnumber, cust);
+			DbFacade.getInstance().addCustomer(ccac.ccnumber, cust);
 		}
 	}
 }

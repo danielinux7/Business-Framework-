@@ -9,8 +9,6 @@ import javax.swing.table.DefaultTableModel;
 
 import BusinessFramework.AccManager;
 import BusinessFramework.Command;
-import BusinessFramework.IAccManager;
-import CreditCardExample.Cmd;
 
 /**
  * A basic JFC based application.
@@ -103,10 +101,11 @@ public class BusFrm extends javax.swing.JFrame {
 			this.setVisible(false); // hide the Frame
 			this.dispose(); // free the system resources
 			System.exit(0); // close the application
+			
 		} catch (Exception e) {
 		}
 	}
-
+	
 	class SymWindow extends java.awt.event.WindowAdapter {
 		@Override
 		public void windowClosing(java.awt.event.WindowEvent event) {

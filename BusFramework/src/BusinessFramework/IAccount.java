@@ -15,9 +15,9 @@ public interface IAccount {
 
 	public boolean Withdraw(double amount);
 
-	public void setAccnr(String Accnr);
+	public void setAccnr(int Accnr);
 
-	public String getAccnr();
+	public int getAccnr();
 
 	public String getType();
 

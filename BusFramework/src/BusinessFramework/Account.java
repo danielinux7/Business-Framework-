@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Account implements IAccount {
 	private double balance;
-	private String Accnr;
+	private int Accnr;
 	private String type;
 	private List<IEntry> entrylist;
 
@@ -59,13 +59,13 @@ public class Account implements IAccount {
 	}
 
 	@Override
-	public void setAccnr(String Accnr) {
+	public void setAccnr(int Accnr) {
 		this.Accnr = Accnr;
 
 	}
 
 	@Override
-	public String getAccnr() {
+	public int getAccnr() {
 		return this.Accnr;
 	}
 

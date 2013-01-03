@@ -44,11 +44,11 @@ public class CompanyCommand extends Cmd {
 			if (pac.accountType != null
 					&& pac.accountType.equalsIgnoreCase("S")) {
 				Saving save = new Saving("Saving");
-				save.setAccnr(pac.accountnr);
+				save.setAccnr(Integer.parseInt(pac.accountnr));
 				cust.addAccount(save);
 			} else {
 				Checking check = new Checking("Checking");
-				check.setAccnr(pac.accountnr);
+				check.setAccnr(Integer.parseInt(pac.accountnr));
 				cust.addAccount(check);
 			}
 			DbFacade.getInstance().addCustomer(pac.accountnr, cust);

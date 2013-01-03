@@ -28,51 +28,18 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="BusinessFramework">
+<hibernate-mapping package="BankingExample">
 
-    <class name="Customer" table="CUSTOMER">
-        <id name="id" column="CUST_ID">
-            
-        </id>
-        <discriminator column="Cust_TYPE" type="string"/>
-        <property name="name" />
-        <property name="city" />
-        <property name="street" />
-        <property name="state" />
-        <property name="zip" />
-        <property name="email" />
-         <bag name="accountlist" >
-         <key column="CUST_ID"/>
-         
-         <one-to-many class="Account"/>
-     	 </bag>
-        
-        
-    </class>
+    <subclass name="Personal" extends="BusinessFramework.Customer" discriminator-value="Personal">
+        <property name="DOB" />         
+    </subclass>
 	
-	<class name="Account" table="ACCOUNT">
-        <id name="Accnr" column="ACC_NR">
-          
-        </id>
-        <discriminator column="Acc_TYPE" type="string"/>
-        <list name="entrylist" >
-         <key column="ACC_NR"/>
-         <list-index column="ENTRY_ID"/>
-         <one-to-many class="Entry"/>
-     	 </list>
-     	 
-        <property name="balance" />
-        <property name="type" />
-      
-    </class>
+	<subclass name="Company" extends="BusinessFramework.Customer" discriminator-value="Company">
+        <property name="numOfEmp" />
+    </subclass>
     
-    <class name="Entry" table="ENTRY">
-    <id name="id" column="ENTRY_ID">
-            <generator class="increment"/>
-        </id>
-        <property name="amount" />
-        <property name="date" type="java.util.Date" column="ENTRY_DATE" />
-      
-    </class>
+	<subclass name="Saving" extends="BusinessFramework.Account" discriminator-value="saving"/>
+    <subclass name="Checking" extends="BusinessFramework.Account" discriminator-value="checking"/>
+    
     
 </hibernate-mapping>

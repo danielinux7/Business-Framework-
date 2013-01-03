@@ -2,7 +2,9 @@ package BankingExample;
 
 import BankGUI.BankFrm;
 import BankGUI.JDialog_Addper;
+import BusinessFramework.Customer;
 import BusinessFramework.DbFacade;
+import BusinessFramework.ICustomer;
 
 public class PersonalCommand extends Cmd {
 
@@ -43,11 +45,11 @@ public class PersonalCommand extends Cmd {
 			cust.setZip(pac.zip);
 			if (pac.accountType.equalsIgnoreCase("S")) {
 				Saving save = new Saving("Saving");
-				save.setAccnr(pac.accountnr);
+				save.setAccnr(Integer.parseInt(pac.accountnr));
 				cust.addAccount(save);
 			} else {
 				Checking check = new Checking("Checking");
-				check.setAccnr(pac.accountnr);
+				check.setAccnr(Integer.parseInt(pac.accountnr));
 				cust.addAccount(check);
 			}
 			DbFacade.getInstance().addCustomer(pac.accountnr, cust);

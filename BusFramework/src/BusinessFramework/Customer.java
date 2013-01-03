@@ -7,22 +7,22 @@ import java.util.Map;
 import java.util.Set;
 
 public class Customer implements ICustomer {
-	private String id;
+	protected int id;
 	private String name;
 	private String city;
 	private String state;
 	private String street;
 	private String email;
 	private String zip;
-	private Map<String, IAccount> accountlist;
+	private List<IAccount> accountlist;
 
 	public Customer() {
-		accountlist = new HashMap();
+		accountlist = new LinkedList();
 	}
 
 	@Override
 	public void addAccount(IAccount account) {
-		this.accountlist.put(account.getAccnr(), account);
+		this.accountlist.add(account);
 		
 	}
 
@@ -63,12 +63,8 @@ public class Customer implements ICustomer {
 
 	@Override
 	public List<IAccount> getAccountList() {
-		Set<String> keys = this.accountlist.keySet();
-		List<IAccount> list = new LinkedList();
-		for (String key : keys) {
-			list.add(this.accountlist.get(key));
-		}
-		return list;
+		
+		return this.accountlist;
 	}
 
 	@Override
@@ -103,22 +99,26 @@ public class Customer implements ICustomer {
 
 	@Override
 	public IAccount getAccount(String accnr) {
-		return this.accountlist.get(accnr);
+		for(IAccount acc:this.accountlist){
+			if((""+acc.getAccnr()).equalsIgnoreCase(accnr))
+				return acc;
+		}
+		return null;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Map<String, IAccount> getAccountlist() {
+	public List<IAccount> getAccountlist() {
 		return accountlist;
 	}
 
-	public void setAccountlist(Map<String, IAccount> accountlist) {
+	public void setAccountlist(List<IAccount> accountlist) {
 		this.accountlist = accountlist;
 	}
 

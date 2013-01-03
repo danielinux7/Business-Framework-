@@ -32,28 +32,29 @@
 
     <class name="Customer" table="CUSTOMER">
         <id name="id" column="CUST_ID">
-            <generator class="increment"/>
+            
         </id>
+        <discriminator column="Cust_TYPE" type="string"/>
         <property name="name" />
         <property name="city" />
         <property name="street" />
         <property name="state" />
         <property name="zip" />
         <property name="email" />
-         <list name="accountlist" >
+         <bag name="accountlist" >
          <key column="CUST_ID"/>
-         <list-index column="ACC_NR"/>
+         
          <one-to-many class="Account"/>
-     	 </list>
+     	 </bag>
         
         
     </class>
 	
 	<class name="Account" table="ACCOUNT">
         <id name="Accnr" column="ACC_NR">
-            <generator class="increment"/>
+          
         </id>
-        
+        <discriminator column="Acc_TYPE" type="string"/>
         <list name="entrylist" >
          <key column="ACC_NR"/>
          <list-index column="ENTRY_ID"/>

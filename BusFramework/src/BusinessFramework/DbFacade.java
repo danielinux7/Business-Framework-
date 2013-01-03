@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.hibernate.Session;
+
+import Hibernate.MainSession;
+
 public class DbFacade implements IDbFacade {
 	private static IDbFacade db = new DbFacade();
 	private Map<String, ICustomer> customermap = new HashMap();
@@ -19,7 +23,12 @@ public class DbFacade implements IDbFacade {
 
 	@Override
 	public ICustomer getCustomer(String accnr) {
-		return customermap.get(accnr);
+		Session session = MainSession.getFactory().openSession();
+		session.beginTransaction();
+		ICustomer cust = (Customer)session.createSQLQuery("select * From Customer where ACC_NR = "+accnr);
+		session.getTransaction().commit();
+		session.close();
+		return cust;
 	}
 
 	@Override
@@ -34,7 +43,14 @@ public class DbFacade implements IDbFacade {
 
 	@Override
 	public void addCustomer(String accnr, ICustomer cust) {
-		this.customermap.put(accnr, cust);
+		Session session = MainSession.getFactory().openSession();
+		session.beginTransaction();
+		cust.setId(5);
+		session.save(cust);
+		session.save(cust.getAccount(accnr));
+		//session.createQuery( "update Account set CUST_ID ="+cust.getId()+" where ACC_NR = "+Integer.parseInt(accnr));
+		session.getTransaction().commit();
+		session.close();
 	}
 
 }

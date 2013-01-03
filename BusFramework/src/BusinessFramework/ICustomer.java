@@ -32,5 +32,6 @@ public interface ICustomer {
 	public String getZip();
 
 	public String getEmail();
-
+	public void setId(int id);
+	public int getId();
 }

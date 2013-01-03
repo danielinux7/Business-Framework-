@@ -8,6 +8,9 @@ import org.hibernate.cfg.Configuration;
 public class MainSession {
 	private static SessionFactory sessionFactory;
 	
+	public static SessionFactory getFactory(){
+		return sessionFactory;
+	}
 	public static void setUp() throws Exception {
 		// A SessionFactory is set up once for an application
         sessionFactory = new Configuration()

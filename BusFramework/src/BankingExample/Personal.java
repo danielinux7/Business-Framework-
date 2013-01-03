@@ -12,5 +12,12 @@ public class Personal extends Customer {
 	public void setDOB(String dOB) {
 		DOB = dOB;
 	}
-
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return this.id;
+	}
 }

@@ -46,18 +46,18 @@ public class NewAccCommand extends Cmd {
 			if (ccac.accountType != null
 					&& ccac.accountType.equalsIgnoreCase("silver")) {
 				Silver silver = new Silver("silver");
-				silver.setAccnr(ccac.ccnumber);
+				silver.setAccnr(Integer.parseInt(ccac.ccnumber));
 				silver.setDate(ccac.expdate);
 				cust.addAccount(silver);
 			} else if (ccac.accountType != null
 					&& ccac.accountType.equalsIgnoreCase("gold")) {
 				Gold gold = new Gold("gold");
-				gold.setAccnr(ccac.ccnumber);
+				gold.setAccnr(Integer.parseInt(ccac.ccnumber));
 				gold.setDate(ccac.expdate);
 				cust.addAccount(gold);
 			} else {
 				Bronze bronze = new Bronze("bronze");
-				bronze.setAccnr(ccac.ccnumber);
+				bronze.setAccnr(Integer.parseInt(ccac.ccnumber));
 				bronze.setDate(ccac.expdate);
 				cust.addAccount(bronze);
 			}
